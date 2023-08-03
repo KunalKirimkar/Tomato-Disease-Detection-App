@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".DecryptionActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTop"
@@ -34,42 +34,49 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="18dp" />
 
-    <TextView
-        android:id="@+id/appName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stegapp"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:gravity="center"
-        android:layout_marginBottom="75dp"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@id/encryptPageButton"
+
+    <ImageView
+        android:id="@+id/selectedImage"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@drawable/image_border"
+        android:cropToPadding="true"
+        android:padding="1dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
 
     <Button
-        android:id="@+id/encryptPageButton"
+        android:id="@+id/selectImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/encrypt"
-        android:textSize="25sp"
-        android:layout_marginBottom="26dp"
-        android:layout_marginTop="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/decryptPageButton"
+        android:layout_marginTop="30dp"
+        android:text="@string/select_image"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/decryptButton"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@+id/appName" />
+        app:layout_constraintTop_toBottomOf="@+id/selectedImage" />
 
     <Button
-        android:id="@+id/decryptPageButton"
+        android:id="@+id/decryptButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/decrypt"
         android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@id/encryptPageButton"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/selectImageButton"
+        app:layout_constraintBottom_toTopOf="@+id/statusText"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:background="@drawable/image_border"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart" />
