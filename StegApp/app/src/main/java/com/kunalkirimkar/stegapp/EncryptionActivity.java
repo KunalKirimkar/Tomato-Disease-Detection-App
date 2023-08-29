@@ -4,18 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
 
 public class EncryptionActivity extends AppCompatActivity {
 
 
-    TextView selectedFileTV, statusTV;
+    TextView statusTV;
+    EditText messageText;
     ImageView selectedImage;
-    Button selectImageBtn, selectFileBtn, encryptBtn;
+    Button selectImageBtn, encryptBtn;
+    File coverImageFile;
     int SELECT_PICTURE = 200;
     static final int PICKFILE_RESULT_CODE = 1;
 
@@ -25,34 +35,43 @@ public class EncryptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_encryption);
 
         selectedImage = findViewById(R.id.selectedImage);
-        selectedFileTV = findViewById(R.id.selectedFileTV);
+        messageText = findViewById(R.id.inputText);
         statusTV = findViewById(R.id.statusText);
         selectImageBtn = findViewById(R.id.selectImageButton);
-        selectFileBtn = findViewById(R.id.selectFileButton);
         encryptBtn = findViewById(R.id.encryptButton);
+        coverImageFile = new File(String.valueOf(selectedImage));
+        Bitmap coverBitmap = BitmapFactory.decodeFile(coverImageFile.getPath());
+        selectedImage.setImageBitmap(coverBitmap);
 
         selectImageBtn.setOnClickListener(v -> ImagePicker());
 
-        selectFileBtn.setOnClickListener(v -> FilePicker());
-
-        encryptBtn.setOnClickListener(v -> EncryptData());
+        encryptBtn.setOnClickListener(v -> HideMessage());
 
     }
 
-    private void ImagePicker() {
+    public void HideMessage() {
+        String message = messageText.getText().toString();
+
+        if(!message.isEmpty()) {
+            try {
+                File outputImageFile = new File("/root/sdcard/Pictures/OutputFile.jpg");
+                // Jsteg.hide(coverImageFile, outputImageFile, message);
+                statusTV.setText("Message encrypted...");
+            }
+            catch (StringIndexOutOfBoundsException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Error hiding message!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            statusTV.setText("Please enter message!");
+        }
+    }
+    public void ImagePicker() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
-    }
-
-    private void FilePicker() {
-        Intent chooseFile;
-        Intent intent;
-        chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
-        chooseFile.setType("*/*");
-        intent = Intent.createChooser(chooseFile, "Choose a file");
-        startActivityForResult(intent, PICKFILE_RESULT_CODE);
     }
 
     @SuppressLint("SetTextI18n")
@@ -67,16 +86,5 @@ public class EncryptionActivity extends AppCompatActivity {
                 }
             }
         }
-        if (requestCode == PICKFILE_RESULT_CODE) {
-            if (resultCode == -1) {
-                Uri uri = data.getData();
-                String filePath = uri.getPath();
-                selectedFileTV.setText("Selected File: " + filePath);
-            }
-        }
-    }
-
-    private void EncryptData() {
-
     }
 }

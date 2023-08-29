@@ -47,6 +47,20 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
 
+    <EditText
+        android:id="@+id/inputText"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:hint="Enter your text here"
+        android:inputType="textMultiLine"
+        android:background="@drawable/image_border"
+        app:layout_constraintBottom_toTopOf="@+id/selectImageButton"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@+id/selectedImage" />
+
     <Button
         android:id="@+id/selectImageButton"
         android:layout_width="wrap_content"

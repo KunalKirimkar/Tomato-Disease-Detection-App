@@ -46,11 +46,14 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
 
-    <TextView
-        android:id="@+id/selectedFileTV"
+    <EditText
+        android:id="@+id/inputText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:textSize="25sp"
+        android:gravity="center"
+        android:hint="Enter your text here"
+        android:inputType="textMultiLine"
         android:background="@drawable/image_border"
         app:layout_constraintBottom_toTopOf="@+id/selectImageButton"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
@@ -63,20 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/select_image"
-        app:layout_constraintBottom_toTopOf="@+id/encryptButton"
-        app:layout_constraintEnd_toStartOf="@+id/selectFileButton"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@+id/selectedImage" />
-
-    <Button
-        android:id="@+id/selectFileButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/select_file"
-        android:layout_marginTop="30dp"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@+id/encryptButton"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
-        app:layout_constraintStart_toEndOf="@id/selectImageButton"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@+id/selectedImage" />
 
     <Button
@@ -85,10 +78,11 @@
         android:layout_height="wrap_content"
         android:text="@string/encrypt"
         android:textSize="25sp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/selectImageButton"
         app:layout_constraintBottom_toTopOf="@+id/statusText"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@+id/selectFileButton" />
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart" />
 
     <TextView
         android:id="@+id/statusText"
