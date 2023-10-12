@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".fragments.DiseaseDetectionFragment">
 
+    <ImageView
+        android:id="@+id/imageBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.9"
+        android:contentDescription="@string/todo"
+        android:rotation="0"
+        android:scaleType="centerCrop"
+        android:src="@drawable/disease_red_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineStart"
         android:layout_width="wrap_content"
@@ -35,42 +49,78 @@
         app:layout_constraintGuide_end="18dp" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:src="@drawable/disease_detection"
-        android:layout_marginTop="50dp"
-        app:layout_constraintVertical_chainStyle="packed"
+        android:id="@+id/selectedImage"
+        android:layout_width="333dp"
+        android:layout_height="310dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintBottom_toTopOf="@+id/uploadButton" />
+        app:layout_constraintBottom_toTopOf="@+id/uploadButton"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:id="@+id/headingText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/tomato_hub"
+        android:textSize="55sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="35dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/descText"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+
+    <TextView
+        android:id="@+id/descText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/desc_text"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/selectedImage"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@+id/headingText" />
+
+    <Button
+        android:id="@+id/cameraButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="@string/capture"
+        app:layout_constraintEnd_toStartOf="@+id/uploadButton"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@+id/selectedImage" />
 
     <Button
         android:id="@+id/uploadButton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Upload Image"
-        android:layout_marginTop="60dp"
+        android:text="@string/upload_image"
+        android:layout_marginTop="45dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
-        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/cameraButton"
+        app:layout_constraintTop_toBottomOf="@+id/selectedImage"
         app:layout_constraintBottom_toTopOf="@+id/detectButton"/>
 
     <Button
         android:id="@+id/detectButton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Detect"
-        android:layout_marginTop="25dp"
+        android:text="@string/detect"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@+id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@+id/uploadButton" />
 
     <TextView
+        android:id="@+id/outputTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Output"
+        android:hint="@string/output"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
         app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"

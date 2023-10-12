@@ -12,13 +12,13 @@
         android:title="@string/disease_detection" />
 
     <item
-        android:id="@+id/marketIntelligence"
-        android:icon="@drawable/market_intelligence"
-        android:title="@string/market_intelligence" />
-
-    <item
         android:id="@+id/preservation"
         android:icon="@drawable/preservation"
         android:title="@string/preservation" />
+
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/about"
+        android:title="@string/about" />
 
 </menu>

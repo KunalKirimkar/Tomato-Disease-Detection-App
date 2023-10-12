@@ -1,66 +1,62 @@
 package com.kunalkirimkar.tomatodiseasedetectionapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 import com.kunalkirimkar.tomatodiseasedetectionapp.R;
+import com.kunalkirimkar.tomatodiseasedetectionapp.adapter.ProductionListAdapter;
+import com.kunalkirimkar.tomatodiseasedetectionapp.dto.ProductionDTO;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProductionFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class ProductionFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ProductionFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProductionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProductionFragment newInstance(String param1, String param2) {
-        ProductionFragment fragment = new ProductionFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    private RecyclerView recyclerView;
+    private ProgressBar skillProgress;
+    private ProductionListAdapter productionListAdapter;
+    private ArrayList<ProductionDTO> list;
+    private ImageButton options;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_production, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_production, container, false);
+        recyclerView = view.findViewById(R.id.productionList);
+        if (recyclerView != null) {
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//            recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        }
+        list = new ArrayList<>();
+        productionListAdapter = new ProductionListAdapter(getContext(), list);
+//        productionListAdapter.setOnItemClickListener(new ProductionListAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(int id) {
+//                ProductionDTO productionDTO = list.get(id);
+//                String productionItemId = productionDTO.getId();
+//
+//                Intent intent = new Intent(requireActivity(), ProductionInfoActivity.class);
+//                intent.putExtra("productionItemId", productionItemId);
+//                startActivity(intent);
+//            }
+//        });
+        recyclerView.setAdapter(productionListAdapter);
+
+        return view;
     }
 }

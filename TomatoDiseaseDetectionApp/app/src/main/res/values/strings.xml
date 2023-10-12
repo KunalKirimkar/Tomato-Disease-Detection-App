@@ -6,8 +6,23 @@
     <string name="title_preservation">Preservation</string>
     <string name="production">Production</string>
     <string name="disease_detection">Disease Detection</string>
-    <string name="market_intelligence">Market Intelligence</string>
+    <string name="about">About</string>
     <string name="preservation">Preservation</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tomato_hub">TOMATOHUB</string>
+    <string name="aboutApp">Certainly! \"TomatoTech Hub\" is an Android mobile application designed to empower stakeholders in the tomato industry. It offers comprehensive resources and tools related to tomato cultivation, disease detection, and preservation techniques. Users can access insights on production systems, identify tomato diseases using image recognition, and learn preservation methods.</string>
+    <string name="shivam_gupta">Shivam Gupta</string>
+    <string name="kunal_kirimkar">Kunal Kirimkar</string>
+    <string name="trupti_ikhar">Trupti Ikhar</string>
+    <string name="sakshi_waghmare">Sakshi Waghmare</string>
+    <string name="about_team">About Team</string>
+    <string name="about_app">About App</string>
+    <string name="todo">TODO</string>
+    <string name="desc_text">let\'s identify the disease</string>
+    <string name="capture">Capture</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="detect">Detect</string>
+    <string name="output">Output</string>
+    <string name="textview">TextView</string>
 </resources>

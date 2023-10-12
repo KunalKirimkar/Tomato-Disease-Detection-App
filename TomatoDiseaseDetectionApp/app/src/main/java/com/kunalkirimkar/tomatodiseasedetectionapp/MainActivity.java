@@ -3,7 +3,6 @@ package com.kunalkirimkar.tomatodiseasedetectionapp;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -12,15 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.navigation.NavigationBarView;
 import com.kunalkirimkar.tomatodiseasedetectionapp.fragments.DiseaseDetectionFragment;
-import com.kunalkirimkar.tomatodiseasedetectionapp.fragments.MarketIntelligenceFragment;
+import com.kunalkirimkar.tomatodiseasedetectionapp.fragments.About;
 import com.kunalkirimkar.tomatodiseasedetectionapp.fragments.PreservationFragment;
 import com.kunalkirimkar.tomatodiseasedetectionapp.fragments.ProductionFragment;
 
 public class MainActivity extends AppCompatActivity {
-
-    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +24,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.production);
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return changeFragment(item.getItemId());
-            }
-        });
+        bottomNavigationView.setOnItemSelectedListener(item -> changeFragment(item.getItemId()));
 
         changeFragment(R.id.production);
     }
@@ -48,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.container, new ProductionFragment());
         } else if (itemId == R.id.diseaseDetection) {
             fragmentTransaction.replace(R.id.container, new DiseaseDetectionFragment());
-        } else if (itemId == R.id.marketIntelligence) {
-            fragmentTransaction.replace(R.id.container, new MarketIntelligenceFragment());
-        } else {
+        } else if (itemId == R.id.preservation) {
             fragmentTransaction.replace(R.id.container, new PreservationFragment());
+        } else {
+            fragmentTransaction.replace(R.id.container, new About());
         }
 
         fragmentTransaction.addToBackStack(null).commit();
