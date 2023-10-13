@@ -14,7 +14,7 @@
         android:contentDescription="@string/todo"
         android:rotation="0"
         android:scaleType="fitXY"
-        android:src="@drawable/temp_bg"
+        android:src="@drawable/green_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,8 +55,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/innerConstraint"
             android:layout_width="match_parent"
-            android:background="#BCEC9F"
-            android:backgroundTint="#BCEC9F"
+            android:background="#FF5C5C"
+            android:backgroundTint="#FF5C5C"
             android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.Guideline

@@ -43,7 +43,7 @@
         android:contentDescription="@string/todo"
         android:rotation="0"
         android:scaleType="centerCrop"
-        android:src="@drawable/about_red_bg"
+        android:src="@drawable/about_green_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
